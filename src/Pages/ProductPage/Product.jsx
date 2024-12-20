@@ -74,7 +74,7 @@ export default function Product() {
           <BiArrowFromTop
             onClick={showProducthandler}
             size={50}
-            className=" rounded-full my-8 border text-xl transform transition-transform duration-300 hover:animate-bounce"
+            className=" rounded-full my-8 border text-xl cursor-pointer transform transition-transform duration-300 hover:animate-bounce"
           />
         </div>
       </div>

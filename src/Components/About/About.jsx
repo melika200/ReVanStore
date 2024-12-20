@@ -20,7 +20,7 @@ export default function About() {
           <BiArrowFromTop
             onClick={showAboutHandler}
             size={50}
-            className=" rounded-full my-8 border text-xl transform transition-transform duration-300 hover:animate-bounce"
+            className=" rounded-full my-8 border cursor-pointer text-xl transform transition-transform duration-300 hover:animate-bounce"
           />
         </div>
       </div>
