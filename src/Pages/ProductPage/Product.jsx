@@ -18,8 +18,9 @@ export default function Product() {
   const dispatch = useDispatch();
   const [show, setShow] = useState(null);
   const showproductRef = useRef(null);
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
+
   const { data, isError, isLoading, error } = useQuery({
     queryKey: ["photos"],
     queryFn: fetchProducts,
@@ -45,6 +46,7 @@ export default function Product() {
       showproductRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   const handleAddToCart = (e, product) => {
     e.stopPropagation();
     e.preventDefault();
@@ -55,18 +57,17 @@ export default function Product() {
       console.error("Product or Product ID/Price is undefined");
     }
   };
+
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(setSearchTerm(search));
     navigate("/filter");
-    console.log(setSearchTerm(search));
-    
   };
-  
+
   return (
     <div className="bg-gray-100">
       <div
-        className=" bg-cover h-screen relative bg-center"
+        className="bg-cover h-screen relative bg-center"
         style={{ backgroundImage: "url('/12.jpg')" }}
       >
         <div className="absolute inset-0 bg-black opacity-30 flex flex-col items-center justify-center text-white">
@@ -74,7 +75,7 @@ export default function Product() {
           <BiArrowFromTop
             onClick={showProducthandler}
             size={50}
-            className=" rounded-full my-8 border text-xl cursor-pointer transform transition-transform duration-300 hover:animate-bounce"
+            className="rounded-full my-8 border text-xl cursor-pointer transform transition-transform duration-300 hover:animate-bounce"
           />
         </div>
       </div>
@@ -87,10 +88,14 @@ export default function Product() {
             <input
               type="text"
               placeholder="Search your measurable product"
+              value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full py-3 px-3 border rounded-lg outline-none placeholder:text-center"
             />
-            <FaSearch className="absolute top-3 right-3 text-red-600" />
+            <FaSearch
+              onClick={handleSearch}
+              className="absolute top-3 right-3 text-red-600 cursor-pointer"
+            />
           </form>
         </div>
         <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 relative">
@@ -100,9 +105,7 @@ export default function Product() {
               key={d.id}
             >
               <div
-                className="absolute  top-3 right-2  flex items-center justify-center w-6 h-6
-               bg-red-600 group text-white text-sm rounded-full 
-                 hover:w-32 hover:bg-red-700 transition-all"
+                className="absolute top-3 right-2 flex items-center justify-center w-6 h-6 bg-red-600 group text-white text-sm rounded-full hover:w-32 hover:bg-red-700 transition-all"
                 onClick={(e) => handleAddToCart(e, d)}
               >
                 <span className="group-hover:hidden">+</span>

@@ -9,6 +9,7 @@ import {
   FaShoppingBag,
   FaShoppingCart,
   FaSignInAlt,
+  FaTable,
   FaTimes,
   FaUser,
 } from "react-icons/fa";
@@ -42,6 +43,12 @@ export default function NavbarItem() {
               className="transform transition rounded duration-300 hover:scale-75 hover:text-white hover:bg-gray-600 px-6 py-2"
             >
               <FaShoppingBag className="text-lg" />
+            </Link>
+            <Link
+              to="/table"
+              className="transform transition rounded duration-300 hover:scale-75 hover:text-white hover:bg-gray-600 px-6 py-2"
+            >
+              <FaTable />
             </Link>
             <Link
               to="/about"

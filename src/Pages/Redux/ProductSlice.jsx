@@ -5,6 +5,7 @@ const initialstate = {
   SearchTerm: "",
   FilterData: [],
 };
+
 const ProductSlice = createSlice({
   name: "product",
   initialState: initialstate,
@@ -21,5 +22,6 @@ const ProductSlice = createSlice({
     },
   },
 });
+
 export const { setProducts, setSearchTerm } = ProductSlice.actions;
 export default ProductSlice.reducer;

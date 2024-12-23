@@ -12,6 +12,7 @@ import Cart from './Pages/Cart/Cart';
 import FilterData from './Pages/ProductPage/FilterData';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Chart from './Components/Chart/Chart';
+import Table from './Pages/Table/Table';
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,10 @@ const Layout = () => {
 
 const isSignedUp = () => {
   return localStorage.getItem("isSignedUp") === "true";
+};
+
+const ProtectedRoute = ({ children }) => {
+  return isSignedUp() ? children : <Navigate to="/login" />;
 };
 
 const App = () => {
@@ -69,8 +74,12 @@ const App = () => {
           element: <FilterData />,
         },
         {
-          path:"/chart",
-          element:<Chart/>
+          path: "/chart",
+          element: <Chart />,
+        },
+        {
+          path: "/table",
+          element: <ProtectedRoute><Table /></ProtectedRoute>,
         }
       ],
     },
@@ -80,7 +89,7 @@ const App = () => {
     },
     {
       path: "*",
-      element: <Navigate to={isSignedUp() ? "/login" : "/"} />,
+      element: <Navigate to="/" />,
     },
   ]);
 

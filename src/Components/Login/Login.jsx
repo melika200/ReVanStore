@@ -7,7 +7,7 @@ import "./Login.css";
 
 const saveUserData = async (data) => {
   localStorage.setItem("userInfo", JSON.stringify(data));
-  localStorage.setItem("isSignedUp", "true"); 
+  localStorage.setItem("isSignedUp", "true");
 };
 
 export default function Login() {
@@ -16,7 +16,6 @@ export default function Login() {
   );
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-
   const mutation = useMutation({
     mutationFn: saveUserData,
     onSuccess: () => {
@@ -145,6 +144,12 @@ export default function Login() {
                   >
                     Sign Up Now
                   </span>
+                  <span
+                    className="text-white text-sm ml-3 cursor-pointer"
+                    onClick={() => navigate("/")}
+                  >
+                    /Go back
+                  </span>
                 </span>
               </p>
             ) : (
@@ -158,6 +163,12 @@ export default function Login() {
                   }}
                 >
                   Sign In Now
+                </span>
+                <span
+                  className="text-white text-sm ml-3 cursor-pointer"
+                  onClick={() => navigate("/")}
+                >
+                  /Go back
                 </span>
               </span>
             )}
