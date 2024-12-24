@@ -11,13 +11,13 @@ export default function Cart() {
   const cart = useSelector((state) => state.cart);
   return (
     <>
-      <div className="container mx-auto py-12">
+      <div className="container mx-auto py-12 mt-24 px-8">
         {cart.carts.length > 0 ? (
           <div>
-            <h3>Cart</h3>
+            <h3 className="text-4xl">Cart</h3>
             <div className="flex flex-col md:flex-row justify-between space-x-10 mt-10">
               <div className="w-2/3">
-                <div className="flex justify-between border-b items-center mb-4 text-xs font-bold">
+                <div className="flex justify-between border-b items-center mb-4 text-md font-bold">
                   <p>Products</p>
                   <div className="flex space-x-14">
                     <p>Price</p>
@@ -74,13 +74,13 @@ export default function Cart() {
                 </div>
               </div>
               <div className="md:w-1/3 bg-white p-6 rounded-lg shadow-md border">
-                <h3 className="text-sm font-semibold mb-5">Cart Total</h3>
+                <h3 className="text-md font-semibold mb-5">Cart Total</h3>
                 <div className="flex justify-between mb-5 border-b pb-1">
-                  <span className="texi-sm">Total Items:</span>
+                  <span className="texi-md">Total Items:</span>
                   <span>{cart.totalQuantity}</span>
                 </div>
                 <div className="flex justify-between mb-4">
-                  <span>Total Price:</span>
+                  <span className="text-md">Total Price:</span>
                   <span>{cart.totalPrice.toFixed(2)}</span>
                 </div>
               </div>

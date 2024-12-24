@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../Redux/CartSlice";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const fetchProducts = async () => {
   const response = await axios.get("https://fakestoreapi.com/products");
@@ -52,7 +53,7 @@ export default function Product() {
     e.preventDefault();
     if (product && product.id && product.price) {
       dispatch(addToCart(product));
-      alert("Product Added Successfully!");
+      toast.success("Product Added Successfully!")
     } else {
       console.error("Product or Product ID/Price is undefined");
     }
@@ -80,6 +81,7 @@ export default function Product() {
         </div>
       </div>
       <div className="container mx-auto px-4 py-10" ref={showproductRef}>
+        <Toaster position="top-right" reverseOrder={true} />
         <h1 className="font-mono text-4xl text-gray-600 text-center py-6">
           Products
         </h1>
